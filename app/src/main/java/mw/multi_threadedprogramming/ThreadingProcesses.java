@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 
 public class ThreadingProcesses extends AppCompatActivity {
 
@@ -48,5 +49,35 @@ public class ThreadingProcesses extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void createList(View view) {
+       Runnable numberList = new CreaterThing();
+        Thread listThread1 = new Thread(numberList);
+        listThread1.run();
+    }
+
+    public void loadEmUp(View view) {
+        Runnable loadTheList = new LoaderThing();
+        Thread listThread2 = new Thread(loadTheList);
+        listThread2.run();
+    }
+
+    public void clearEm(View view) {
+        listOfNumbers.clear();
+    }
+
+    ArrayAdapter listOfNumbers;
+}
+
+class CreaterThing implements Runnable {
+    public void run() {
+
+    }
+}
+
+class LoaderThing implements Runnable {
+    public void run() {
+
     }
 }
